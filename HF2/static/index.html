@@ -1,23 +1,143 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Bootstrap 4 Tutorial</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-</head>
+<body style="background-color: gray">
 
-<input type="number" value="1" min="0" max="100" step="1"/>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Autóalkatrész WEBSHOP</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+            crossorigin="anonymous">
+        </link>
+    </head>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="#">
+                <h1>Autóalkatrész WEBSHOP</h1>
+            </a>
 
-<div class="qty mt-5">
-    <span class="minus bg-dark">-</span>
-    <input type="number" class="count" name="qty" value="1">
-    <span class="plus bg-dark">+</span>
-</div>
+        </div>
+    </nav>
+    <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark ">
+        <div class="container">
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item  active">
+                        <a class="nav-link" href="brands.html">Márkák</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cars.html">Autók</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="parts.html">Alkatrészek</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html"><i class="fas fa-user"></i> Belépés</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i> Kosár</a>
+
+                    </li>
+                </ul>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <!--<div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="card m-3 mt-5" style="background-color:lightgray">
+                    <div class="card-body text-center">
+                        <img src="img/opel.png" alt="#" class="rounded">
+                        <button type="button" class="btn btn-outline-dark btn-lg btn-block mt-3" href="#">Opel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card m-3 mt-5" style="background-color:lightgray">
+                    <div class="card-body text-center">
+                        <img src="img/ford.png" alt="#" href="#" class="rounded">
+                        <button type="button" class="btn btn-outline-dark btn-lg btn-block mt-3" href="#">Ford</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card m-3 mt-5" style="background-color:lightgray">
+                    <div class="card-body text-center">
+                        <img src="img/suzuki.png" alt="#" class="rounded">
+                        <button type="button" class="btn btn-outline-dark btn-lg btn-block mt-3"
+                            href="#">Suzuki</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card m-3 mt-5" style="background-color:lightgray">
+                    <div class="card-body text-center">
+                        <img src="img/toyota.png" alt="#" class="rounded">
+                        <button type="button" class="btn btn-outline-dark btn-lg btn-block mt-3"
+                            href="#">Toyota</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div class="container">
+        <div class="card-deck mt-5">
+            <div class="card" style="background-color:lightgray">
+                <div class="card-body text-center">
+                    <img src="img/opel.png" alt="#" class="card-img-top">
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-dark btn-lg btn-block" href="cars-opel.html" role="button">Opel</a>
+                </div>
+            </div>
+            <div class="card" style="background-color:lightgray">
+                <div class="card-body text-center">
+                    <img src="img/ford.png" alt="#" href="#" class="card-img-top">
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-dark btn-lg btn-block" href="#">Ford</button>
+                </div>
+            </div>
+            <div class="card" style="background-color:lightgray">
+                <div class="card-body text-center">
+                    <img src="img/suzuki.png" alt="#" class="card-img-top">
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-dark btn-lg btn-block" href="#">Suzuki</button>
+                </div>
+            </div>
+            <div class="card" style="background-color:lightgray">
+                <div class="card-body text-center">
+                    <img src="img/toyota.png" alt="#" class="card-img-top">
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-dark btn-lg btn-block" href="#">Toyota</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
 
 </html>
