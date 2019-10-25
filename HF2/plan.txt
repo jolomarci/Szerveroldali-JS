@@ -39,7 +39,7 @@ MWs:
 
 Routing:
 
-    GET /                           - index.html
+    GET /                                 - index.html
 
     GET, POST /login                      - login.html
         checkpwMW
