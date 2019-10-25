@@ -19,10 +19,10 @@ const getOrdersMW = require('../middlewares/admin/getOrdersMW')
 module.exports = function (app) {
     const objRepo = {};
 
-    // '/' route
+    // '/' routes
     app.get('/');
 
-    //auth route
+    //auth routes
     app.use('/auth',
     authMW(objRepo),
     loginMW(objRepo));
@@ -81,11 +81,13 @@ module.exports = function (app) {
     getItemMW(objRepo),
     delItemMW(objRepo));
 
+    //order routes
     app.use('/order',
     getDataMW(objRepo),
     saveDataMW(objRepo),
     renderMW(objRepo, 'orderdata'));
 
+    //admin routes
     app.get('/admin',
     getOrdersMW(objRepo),
     renderMW(objRepo, 'orderlist'));
