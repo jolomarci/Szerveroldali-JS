@@ -1,0 +1,112 @@
+Autóalkatrész WEBSHOP
+
+    - index.html                        - főoldal
+    - listcars.html                     - összes autó listázása vagy 
+                                            autók márka szerint listázva
+    - careditnew.html                   - ha admin bevan lépve: autó lista szerkesztése (edit + save + delete)
+    - listparts.html                    - alkatrész lista egy adott típushoz
+    - parteditnew.html                  - ha admin bevan lépve: alkatrész lista szerkesztése (edit + new + delete)
+    - cart.html                         - kosár lista, plusz törlés listából
+    - buy.html                          - szállítási és bankkártya adatok bevitele
+    - login.html                        - admin belépés
+    - admin.html                        - admin page, vásárlás log
+
+MWs:
+    checkpwMW
+    handlewrongpw
+    authMW 
+
+    getCarsMW
+    saveCarMW
+    getCarMW
+    delCarMW
+
+    getPartsMW
+    savePartMW
+    getPartMW
+    delPartMW
+
+    getCartMW
+    getItemMW
+    delItemMW
+
+    getDataMW
+    saveDataMW
+
+    getOrdersMW
+
+    renderMW
+
+Routing:
+
+    GET /                           - index.html
+
+    GET, POST /login                      - login.html
+        checkpwMW
+        handlewrongpw
+
+    GET /cars                       
+        getCarsMW
+        renderMW(listcars.html)
+
+    GET /car/:brandid               
+        getCarsMW   
+        renderMW(listcars.html)
+
+    GET, POST /car/opel/new              
+        authMW
+        saveCarMW
+        renderMW(careditnew.html (new))
+
+    GET, POST /car/opel/edit/:carid
+        authMW
+        getCarMW
+        saveCarMW
+        renderMW(careditnew.html (edit))
+
+    GET /car/opel/del/:carid
+        authMW
+        getCarMW
+        delCarMW
+
+    *same for every other brand*
+
+    GET /parts
+        getPartsMW
+        renderMW(listparts.html)
+
+    GET /part/list/:carid
+        getPartsMW
+        renderMW(listparts.html)
+
+    GET, POST /part/edit/:carid
+        authMW
+        savePartMW
+        renderMW(parteditnew.html (new))
+
+    GET, POST /part/new/:carid
+        authMW
+        getPartMW
+        savePartMW
+        renderMW(parteditnew.html (edit))
+
+    GET /part/del/:carid
+        authMW
+        getPartMW
+        delPartMW
+
+    GET /cart
+        getCartMW
+        renderMW(cart.html)
+    
+    GET /cart/del/:itemid
+        getItemMW
+        delItemMW
+
+    GET, POST /order
+        getDataMW
+        saveDataMW
+
+    GET /admin
+        getOrdersMW
+        renderMW(admin.html)
