@@ -1,5 +1,6 @@
 const authMW = require('../middlewares/auth/authMW')
 const loginMW = require('../middlewares/auth/loginMW')
+const logoutMW = require('../middlewares/auth/logoutMW')
 const renderMW = require('../middlewares/renderMW')
 const getCarsMW = require('../middlewares/car/getCarsMW')
 const getCarMW = require('../middlewares/car/getCarMW')
@@ -7,7 +8,7 @@ const saveCarMW = require('../middlewares/car/saveCarMW')
 const delCarMW = require('../middlewares/car/delCarMW')
 const getPartsMW = require('../middlewares/part/getPartsMW')
 const getPartMW = require('../middlewares/part/getPartMW')
-const savePartMW = require('../middlewares/part/PartCarMW')
+const savePartMW = require('../middlewares/part/savePartMW')
 const delPartMW = require('../middlewares/part/delPartMW')
 const getCartMW = require('../middlewares/cart/getCartMW')
 const getItemMW = require('../middlewares/cart/getItemMW')
@@ -18,79 +19,89 @@ const getOrdersMW = require('../middlewares/admin/getOrdersMW')
 
 module.exports = function (app) {
     const objRepo = {};
-
     // '/' routes
-    app.get('/');
+    app.get('/',
+        renderMW(objRepo, 'index'));
 
     //auth routes
-    app.use('/auth',
-    authMW(objRepo),
-    loginMW(objRepo));
+
+    app.get('/auth',
+        authMW(objRepo));
+
+    app.get('/login',
+        renderMW(objRepo, 'login'));
+
+    app.post('/login',
+        loginMW(objRepo));
+
+    app.get('/logout',
+        logoutMW(objRepo));
 
     //car routes
     app.get('/cars',
-    getCarsMW(objRepo),
-    renderMW(objRepo, 'carslist'));
+        getCarsMW(objRepo),
+        renderMW(objRepo, 'cars'));
 
     app.get('/car/:brandid',
-    getCarsMW(objRepo),
-    renderMW(objRepo, 'brandedcarlist'));
+        getCarsMW(objRepo),
+        renderMW(objRepo, 'brandedcarlist'));
 
     app.use('/car/:brandid/new',
-    authMW(objRepo),
-    saveCarMW(objRepo),
-    render(objRepo, 'careditnew'));
+        authMW(objRepo),
+        saveCarMW(objRepo),
+        renderMW(objRepo, 'careditnew'));
 
     app.use('/car/:brandid/edit/:carid',
-    authMW(objRepo),
-    getCarMW(objRepo),
-    saveCarMW(objRepo),
-    render(objRepo, 'careditnew'));
+        authMW(objRepo),
+        getCarMW(objRepo),
+        saveCarMW(objRepo),
+        renderMW(objRepo, 'careditnew'));
 
     app.use('/car/:brandid/del/:carid',
-    authMW(objRepo),
-    getCarMW(objRepo),
-    delCarMW(objRepo));
+        authMW(objRepo),
+        getCarMW(objRepo),
+        delCarMW(objRepo));
 
     //part routes
     app.get('/part/:carid',
-    getPartsMW(objRepo),
-    renderMW(objRepo, 'partlist'));
+        getPartsMW(objRepo),
+        renderMW(objRepo, 'partlist'));
 
     app.use('/part/:carid/new',
-    authMW(objRepo),
-    savePartMW(objRepo),
-    delPartMW(objRepo));
+        authMW(objRepo),
+        savePartMW(objRepo),
+        delPartMW(objRepo));
 
     app.use('/part/:carid/edit/:partid',
-    authMW(objRepo),
-    getPartMW(objRepo),
-    savePartMW(objRepo));
+        authMW(objRepo),
+        getPartMW(objRepo),
+        savePartMW(objRepo));
 
     app.use('/part/:carid/del/:partid',
-    authMW(objRepo),
-    getPartMW(objRepo),
-    delPartMW(objRepo));
+        authMW(objRepo),
+        getPartMW(objRepo),
+        delPartMW(objRepo));
 
     //cart routes
     app.get('/cart',
-    getCartMW(objRepo),
-    renderMW(objRepo, 'cartlist'));
+        getCartMW(objRepo),
+        renderMW(objRepo, 'cartlist'));
 
     app.use('/cart/del',
-    getItemMW(objRepo),
-    delItemMW(objRepo));
+        getItemMW(objRepo),
+        delItemMW(objRepo));
 
     //order routes
     app.use('/order',
-    getDataMW(objRepo),
-    saveDataMW(objRepo),
-    renderMW(objRepo, 'orderdata'));
+        getDataMW(objRepo),
+        saveDataMW(objRepo),
+        renderMW(objRepo, 'orderdata'));
 
     //admin routes
     app.get('/admin',
-    getOrdersMW(objRepo),
-    renderMW(objRepo, 'orderlist'));
+        authMW(objRepo),
+        getOrdersMW(objRepo),
+        renderMW(objRepo, 'orderlist'));
 
 
 

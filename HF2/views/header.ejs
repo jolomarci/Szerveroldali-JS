@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<body style="background-color: gray">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Autóalkatrész WEBSHOP</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+            crossorigin="anonymous">
+        </link>
+    </head>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="#">
+                <h1>Autóalkatrész WEBSHOP</h1>
+            </a>
+
+        </div>
+    </nav>
+    <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark ">
+        <div class="container">
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul class="navbar-nav mr-auto">
+
+                    <% if(pagetype=="home"){ %>
+                        <li class="nav-item  active">
+                    <% } else{ %>  
+                        <li class="nav-item">
+                    <% } %>
+                        <a class="nav-link" href="/">Márkák</a>
+                    </li>
+
+                    <% if(pagetype=="cars"){ %>
+                        <li class="nav-item  active">
+                    <% } else{ %>  
+                        <li class="nav-item">
+                    <% } %>
+                        <a class="nav-link" href="/cars">Autók</a>
+                    </li>
+
+                    <% if(pagetype=="parts"){ %>
+                        <li class="nav-item  active">
+                    <% } else{ %>  
+                        <li class="nav-item">
+                    <% } %>
+                        <a class="nav-link" href="/cars">Alkatrészek</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+
+                        <% if(pagetype=="login" || pagetype=="admin"){ %>
+                            <li class="nav-item  active">
+                        <% } else{ %>  
+                            <li class="nav-item">
+                        <% } %>
+                            <% if(loggedin){ %>
+                                <a class="nav-link" href="/admin"><i class="fas fa-user"></i> Admin</a>
+                            <%} else{ %>
+                                <a class="nav-link" href="/auth"><i class="fas fa-user"></i> Belépés</a>
+                            <% } %>
+                        </li>
+
+                        <li class="nav-item">
+                        <% if(loggedin){ %>
+                            <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Kilépés</a>
+                        <%} else{ %>
+                            <% if(pagetype=="cart"){ %>
+                                <li class="nav-item  active">
+                            <% } else{ %>  
+                                <li class="nav-item">
+                            <% } %>
+                                <a class="nav-link" href="/cart"><i class="fas fa-shopping-cart"></i> Kosár</a>
+                        <% } %>                        
+                        </li>
+                        
+                </ul>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
