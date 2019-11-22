@@ -1,4 +1,4 @@
-<%- include('header') %>
+<%- include('header', pagetype = "cart") %>
 
 <div class="container">
     <div class="row">
@@ -10,65 +10,37 @@
                     <table class="table mt-3 table-hover table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">Alkatrész</th>
                                 <th scope="col">Gyártó</th>
+                                <th scope="col">Alkatrész</th>
                                 <th scope="col">Ár</th>
                                 <th scope="col">Mennyiség</th>
                                 <th scope="col">Törlés</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <% var sum=0 %>
+                            <% part.forEach(function(one){ %>
+                            <% sum += one.price%>
                             <tr>
-                                <td>féktárcsa</td>
-                                <td>Brembo</th>
-                                <td>15 000FT</td>
-                                <td>2</td>
                                 <td>
-                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                            class="fas fa-times"></i></button>
+                                    <%= one.partBrand %>
+                                </td>
+                                <td>
+                                    <%= one.partType %>
+                                </td>
+                                <td>
+                                    <%= one.price %>
+                                </td>
+                                <td>
+                                    <%= one.quantity %> db
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm" href="/cart/del/<%= one._id %>" role="button">
+                                        <i class="fas fa-times"></i>
+                                    </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>féktárcsa</td>
-                                <td>Brembo</th>
-                                <td>15 000FT</td>
-                                <td>2</td>
-                                <td>
-                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                            class="fas fa-times"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>féktárcsa</td>
-                                <td>Brembo</th>
-                                <td>15 000FT</td>
-                                <td>2</td>
-                                <td>
-                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                            class="fas fa-times"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>féktárcsa</td>
-                                <td>Brembo</th>
-                                <td>15 000FT</td>
-                                <td>2</td>
-                                <td>
-                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                            class="fas fa-times"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>féktárcsa</td>
-                                <td>Brembo</th>
-                                <td>15 000FT</td>
-                                <td>2</td>
-                                <td>
-                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                            class="fas fa-times"></i></button>
-                                </td>
-                            </tr>
-
+                            <% }); %>
                         </tbody>
                     </table>
                 </div>
@@ -84,12 +56,12 @@
                         <tbody>
                             <tr>
                                 <th>Összesen</th>
-                                <td colspan="3">150 000 FT</td>
+                                <td colspan="3"><%= sum %> FT</td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="text-center">
-                        <a class="btn btn-dark mb-3" href="buy.html" role="button">Megveszem</a>
+                        <a class="btn btn-dark mb-3" href="/order" role="button">Megveszem</a>
                     </div>
                 </div>
             </div>

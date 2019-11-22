@@ -1,3 +1,4 @@
+
 const express = require('express');
 const session = require('express-session')
 const app = express();
@@ -14,10 +15,6 @@ app.use(session({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(function (req, res, next) {
-    res.locals.loggedin = req.session.loggedin;
-    next();
-});
 
 require('./routes/index')(app);
 app.listen(3000, function () {

@@ -1,0 +1,48 @@
+<%- include('header', pagetype="cars") %>
+
+<% if(loggedin){ %>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10 mt-3">
+        <div class="card text-center">
+            <h4 class="card-header ">
+                <% if(typeof car=== 'undefined') {%>
+                Új autó hozzáadása
+                <% }else{%>
+                Szerkesztés
+                <% } %>
+            </h4>
+            <div class="container">
+                <form method="POST">
+                    <div class="form-row">
+                        <div class="col my-4">
+                            <label for="sel1">Márka:</label>
+                            <select class="form-control" id="sel1">
+                                <option <%if(car.carbrand=='Opel'){%> selected <%}%>>Opel</option>
+                                <option <%if(car.carbrand=='Ford'){%> selected <%}%>>Ford</option>
+                                <option <%if(car.carbrand=='Suzuki'){%> selected <%}%>>Suzuki</option>
+                                <option <%if(car.carbrand=='Toyota'){%> selected <%}%>>Toyota</option>
+                            </select>
+                        </div>
+                        <div class="col  my-4">
+                            <label for="model">Típus:</label>
+                            <input type="text" class="form-control" placeholder="Típus" id="model" name="model"
+                                value="<%= (typeof car==='undefined') ? '' : car.model %>">
+                        </div>
+                        <div class="col  my-4">
+                            <label for="year">Évjárat:</label>
+                            <input type="text" class="form-control" placeholder="Évjárat" id="year" name="year"
+                                value="<%= (typeof car==='undefined') ? '' : car.year %>">
+                        </div>
+                    </div>
+                </form>
+                <input type="submit" class="btn btn-dark mb-3"></input>
+                <a class="btn btn-danger mb-3" href="/car/<%= (typeof car==='undefined') ? '' : car.carbrand.toLowerCase() %>">Mégsem</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+<% } %>
+
+<%- include('footer') %>

@@ -12,97 +12,32 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Név</th>
                                 <th scope="col">Ár</th>
-                                <th scope="col">Kifizetve</th>
                                 <th scope="col">Műveletek</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <% order.forEach(function(oneOrder){ %>
                             <tr>
-                                <td>#123456</td>
-                                <td>Példa Béla</td>
-                                <td>150 000ft</td>
-                                <td>igen</td>
                                 <td>
-                                    <a class="btn btn-primary btn-sm" href="parts-opel.html" role="button">
+                                    <%= oneOrder._id %>
+                                </td>
+                                <td>
+                                    <%= oneOrder.name %>
+                                </td>
+                                <td>
+                                    <%= oneOrder.price %>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="mailto:<%= oneOrder.email %>" role="button">
                                         <i class="far fa-envelope"></i>
                                     </a>
-                                    <a class="btn btn-success btn-sm" href="parts-opel.html" role="button">
-                                        <i class="fas fa-check"></i>
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="parts-opel.html" role="button">
+                                    <a class="btn btn-danger btn-sm" href="/order/<%= oneOrder._id %>/del"
+                                        role="button">
                                         <i class="fas fa-times"></i>
                                     </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>#123456</td>
-                                <td>Példa Béla</td>
-                                <td>150 000ft</td>
-                                <td>igen</td>
-                                <td>
-                                    <a class="btn btn-primary btn-sm" href="parts-opel.html" role="button">
-                                        <i class="far fa-envelope"></i>
-                                    </a>
-                                    <a class="btn btn-success btn-sm" href="parts-opel.html" role="button">
-                                        <i class="fas fa-check"></i>
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="parts-opel.html" role="button">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#123456</td>
-                                <td>Példa Béla</td>
-                                <td>150 000ft</td>
-                                <td>igen</td>
-                                <td>
-                                    <a class="btn btn-primary btn-sm" href="parts-opel.html" role="button">
-                                        <i class="far fa-envelope"></i>
-                                    </a>
-                                    <a class="btn btn-success btn-sm" href="parts-opel.html" role="button">
-                                        <i class="fas fa-check"></i>
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="parts-opel.html" role="button">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#123456</td>
-                                <td>Példa Béla</td>
-                                <td>150 000ft</td>
-                                <td>igen</td>
-                                <td>
-                                    <a class="btn btn-primary btn-sm" href="parts-opel.html" role="button">
-                                        <i class="far fa-envelope"></i>
-                                    </a>
-                                    <a class="btn btn-success btn-sm" href="parts-opel.html" role="button">
-                                        <i class="fas fa-check"></i>
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="parts-opel.html" role="button">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#123456</td>
-                                <td>Példa Béla</td>
-                                <td>150 000ft</td>
-                                <td>igen</td>
-                                <td>
-                                    <a class="btn btn-primary btn-sm" href="parts-opel.html" role="button">
-                                        <i class="far fa-envelope"></i>
-                                    </a>
-                                    <a class="btn btn-success btn-sm" href="parts-opel.html" role="button">
-                                        <i class="fas fa-check"></i>
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="parts-opel.html" role="button">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
-
+                            <% }); %>
                         </tbody>
                     </table>
                 </div>

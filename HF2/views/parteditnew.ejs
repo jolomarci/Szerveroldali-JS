@@ -1,0 +1,31 @@
+<%- include('header', pagetype="parts") %>
+
+<%if (loggedin){ %>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10 mt-3">
+        <div class="card text-center">
+            <h4 class="card-header ">Szerkesztés</h4>
+            <div class="container">
+                <form>
+                    <div class="form-row">
+                        <div class="col  my-4 ml-4">
+                            <input type="text" class="form-control" placeholder="Alkatrész">
+                        </div>
+                        <div class="col  my-4">
+                            <input type="text" class="form-control" placeholder="Gyártó">
+                        </div>
+                        <div class="col  my-4 mr-4">
+                            <input type="text" class="form-control" placeholder="Ár">
+                        </div>
+                    </div>
+                </form>
+                <button type="submit" class="btn btn-dark mb-3">Hozzáadás</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+<% } %>
+
+<%- include('footer') %>

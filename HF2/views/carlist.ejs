@@ -1,64 +1,58 @@
-<%- include('header', pagetype="parts") %>
+<%- include('header', pagetype="cars") %>
 
 <div class="container">
     <div class="row">
         <div class="col-1"></div>
         <div class="col-10 mt-5">
             <div class="card text-center">
-                <h4 class="card-header">Alkatrészek</h4>
+                <h4 class="card-header text-center">Autók</h4>
                 <div class="container">
                     <table class="table mt-3 table-hover table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">Gyártó</th>
-                                <th scope="col">Alkatrész</th>
-                                <th scope="col">Megjegyzés</th>
-                                <th scope="col">Ár</th>
-                                <th scope="col">Mennyiség</th>
-                                <th scope="col">Kosárba</th>
+                                <th scope="col">Márka</th>
+                                <th scope="col">Típus</th>
+                                <th scope="col">Évjárat</th>
+                                <th scope="col">Alkatrészek</th>
                                 <% if(loggedin) { %>
                                 <th scope="col">Műveletek</th>
                                 <% } %>
                             </tr>
                         </thead>
                         <tbody>
-                            <% part.forEach(function(onePart){ %>
+
+                            <% car.forEach(function(one){ %>
                             <tr>
                                 <td>
-                                    <%= onePart.partBrand %>
+                                    <%= one.carbrand %>
                                 </td>
                                 <td>
-                                    <%= onePart.partType %>
+                                    <%= one.model %>
                                 </td>
                                 <td>
-                                    <%= onePart.comment %>
+                                    <%= one.year %>
                                 </td>
                                 <td>
-                                    <%= onePart.price %>
-                                </td>
-                                <td>
-                                    <input type="number" value="1" min="1" max="100" step="1" />
-                                </td>
-                                <td><button type="submit" class="btn btn-outline-success btn-sm">
-                                        <i class="fas fa-plus"></i></button>
+                                    <a class="btn btn-dark btn-sm" href="/part/<%= one._id%>"
+                                        role="button">Tovább</a>
                                 </td>
                                 <% if(loggedin) { %>
                                 <td>
-                                    <a class="btn btn-dark btn-sm" href="/part/<%= onePart._carid %>/edit/<%= onePart._id %>" role="button">
+                                    <a class="btn btn-dark btn-sm" href="/car/<%= one.carbrand.toLowerCase()%>/edit/<%= one._id%>" role="button">
                                         <i class="fas fa-edit"></i>
                                     </a>
 
-                                    <a class="btn btn-danger btn-sm" href="/part/<%= onePart._carid %>/del/<%= onePart._id %>" role="button">
+                                    <a class="btn btn-danger btn-sm" href="/car/<%= one.carbrand.toLowerCase() %>/del/<%= one._id%>" role="button">
                                         <i class="fas fa-times"></i>
                                     </a>
 
-                                    <a class="btn btn-success btn-sm" href="/part/ <%= onePart._carid %>/new" role="button">
+                                    <a class="btn btn-success btn-sm" href="/car/<%= one.carbrand.toLowerCase()%>/new" role="button">
                                         <i class="fas fa-plus"></i>
                                     </a>
                                 </td>
                                 <% } %>
                             </tr>
-                            <% }); %>
+                            <% });%>
                         </tbody>
                     </table>
                 </div>
@@ -67,7 +61,9 @@
         <div class="col-1"></div>
     </div>
     <div class="row">
-        <div class="col my-3"></div>
+        <div class="col my-3">
+
+        </div>
     </div>
 </div>
 
