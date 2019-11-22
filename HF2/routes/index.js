@@ -101,7 +101,7 @@ module.exports = function (app) {
     app.use('/cart/del/:partid',
         getItemMW(objRepo),
         delItemMW(objRepo));
-    
+
     app.use('/cart/new/:partid',
         getItemMW(objRepo),
         delItemMW(objRepo));
@@ -111,13 +111,13 @@ module.exports = function (app) {
         renderMW(objRepo, 'cartlist'));
 
     //order routes
-    app.use('/order/new',
-        saveOrderMW(objRepo),
-        renderMW(objRepo, 'orderform'));
-
     app.use('/order/del/:orderid',
         getOrderMW(objRepo),
         delOrderMW(objRepo));
+
+    app.use('/order',
+        saveOrderMW(objRepo),
+        renderMW(objRepo, 'orderform'));
 
     //admin routes
     app.get('/admin',

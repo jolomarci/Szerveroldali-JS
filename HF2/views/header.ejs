@@ -26,7 +26,7 @@
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="navbar-nav mr-auto">
 
-                    <% if(pagetype=="home"){ %>
+                    <% if(typeof pagetype!=='undefined' && pagetype=="home"){ %>
                         <li class="nav-item  active">
                     <% } else{ %>  
                         <li class="nav-item">
@@ -34,7 +34,7 @@
                         <a class="nav-link" href="/">Márkák</a>
                     </li>
 
-                    <% if(pagetype=="cars"){ %>
+                    <% if(typeof pagetype!=='undefined' && pagetype=="cars"){ %>
                         <li class="nav-item  active">
                     <% } else{ %>  
                         <li class="nav-item">
@@ -42,7 +42,7 @@
                         <a class="nav-link" href="/car">Autók</a>
                     </li>
 
-                    <% if(pagetype=="parts"){ %>
+                    <% if(typeof pagetype!=='undefined' && pagetype=="parts"){ %>
                         <li class="nav-item  active">
                     <% } else{ %>  
                         <li class="nav-item">
@@ -55,7 +55,7 @@
             <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul class="navbar-nav ml-auto">
 
-                        <% if(pagetype=="login" || pagetype=="admin"){ %>
+                        <% if(typeof pagetype!=='undefined' && (pagetype=="login" || pagetype=="admin")){ %>
                             <li class="nav-item  active">
                         <% } else{ %>  
                             <li class="nav-item">
@@ -71,7 +71,7 @@
                         <% if(loggedin){ %>
                             <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Kilépés</a>
                         <%} else{ %>
-                            <% if(pagetype=="cart"){ %>
+                            <% if(typeof pagetype!=='undefined' && pagetype=="cart"){ %>
                                 <li class="nav-item  active">
                             <% } else{ %>  
                                 <li class="nav-item">
