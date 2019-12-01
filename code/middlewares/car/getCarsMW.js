@@ -14,6 +14,7 @@ module.exports = function (objectrepository) {
                     return next(err);
                 }
 
+                console.log("cars found");
                 res.locals.cars = cars;
                 return next();
             })
@@ -26,7 +27,7 @@ module.exports = function (objectrepository) {
                 if (err) {
                     return next(err);
                 }
-                console.log("car found");
+                console.log("branded cars found");
                 res.locals.cars = cars;
                 return next();
             })

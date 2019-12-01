@@ -6,6 +6,7 @@ const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository, viewName) {
     const orderModel = requireOption(objectrepository, 'orderModel');
+    
     return function (req, res, next) {
         orderModel.findOne({ _id: req.params.orderid }, (err, order) => {
             if (err) return next(err);

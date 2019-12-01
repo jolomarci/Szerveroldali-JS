@@ -10,33 +10,33 @@
                     <form action="/order" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputName">Név</label>
+                                <label for="name">Név</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Név">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputEmail">Email</label>
+                                <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputCity">Város</label>
+                                <label for="city">Város</label>
                                 <input type="text" class="form-control" id="city" name="city">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputState">Megye</label>
+                                <label for="county">Megye</label>
                                 <select id="county" name="county" class="form-control">
                                     <option selected>Válassz...</option>
                                     <option>...</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-2">
-                                <label for="inputZip">Irányítószám</label>
+                                <label for="postcode">Irányítószám</label>
                                 <input type="text" class="form-control" id="postcode" name="postcode">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputAddress">Cím</label>
+                            <label for="address">Cím</label>
                             <input type="text" class="form-control" id="address" name="address"
                                 placeholder="pl: 1117, Budapest, Irinyi József u. 42.">
                         </div>
@@ -73,7 +73,7 @@
                             <div class="form-group col-md-3"></div>
                         </div>
                         <button type="submit" class="btn btn-success">Megrendelem</button>
-                        <button class="btn btn-success" href="/cart">Mégsem</button>
+                        <button class="btn btn-danger" href="/cart">Mégsem</button>
                     </form>
                 </div>
             </div>

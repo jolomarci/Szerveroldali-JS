@@ -3,7 +3,6 @@ const requireOption = require('../requireOption');
 module.exports = function (objectrepository) {
 
     return function (req, res, next) {
-        console.log("csekkiti csekk")
         if (typeof req.body.quantity === 'undefined') {
             console.log("no kvantiti")
             return next();
@@ -16,7 +15,7 @@ module.exports = function (objectrepository) {
         }
 
         else {
-            console.log("okés báttya" + req.body.quantity);
+            console.log("okés báttya " + req.body.quantity);
             return next();
         }
     };

@@ -10,8 +10,13 @@ module.exports = function (objectrepository, viewName) {
 
     return async function (req, res, next) {
         if (typeof req.body.name === 'undefined' ||
-            typeof req.body.email === 'undefined') {
-            console.log("nem jó te szar");
+            typeof req.body.email === 'undefined'||
+            typeof req.body.postcode === 'undefined' ||
+            typeof req.body.address === 'undefined' ||
+            typeof req.body.cardname === 'undefined'||
+            typeof req.body.cardnum === 'undefined'||
+            typeof req.body.cardname === 'date' ||
+            typeof req.body.cardname === 'code'){
             return next();
         }
         res.locals.order = new orderModel();
@@ -32,7 +37,6 @@ module.exports = function (objectrepository, viewName) {
         res.locals.order.date = req.body.date;
         res.locals.order.code = req.body.code;
 
-        console.log("order not yet saved");
         res.locals.order.save(err => {
             if (err) return next(err);
 

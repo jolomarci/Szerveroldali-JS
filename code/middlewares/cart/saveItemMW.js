@@ -1,5 +1,6 @@
 /**
  * Kosárhoz hozzáad egy alkatrészt
+ *  - ha hozzáadásnál nem lett beállítva a mennyiség akkor beállít egy "errort"
  */
 const requireOption = require('../requireOption');
 
@@ -8,12 +9,10 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         if (res.locals.part === 'undefined') {
-            console.log("valami");
             return next();
         }
 
         if (res.locals.error != 'Zero quantity error') {
-            console.log("ez is valami");
             if (res.locals.part.inCart === false) {
                 res.locals.part.inCart = true;
                 res.locals.part.quantity = parseInt(req.body.quantity, 10);
@@ -23,10 +22,7 @@ module.exports = function (objectrepository) {
             }
 
             res.locals.part.save(err => {
-                if (err) {
-                    console.log("cart part save error");
-                    return next(err);
-                }
+                if (err) return next(err);
 
                 console.log("cart updated");
                 return res.redirect("/part/" + res.locals.part._carid);
@@ -34,10 +30,7 @@ module.exports = function (objectrepository) {
         }
         else {
             partModel.find({ _carid: res.locals.part._carid }, (err, parts) => {
-                if (err) {
-                    console.log("errror gecii bazdmeg");
-                    return next(err);
-                }
+                if (err) return next(err);
 
                 res.locals.parts = parts;
                 return next();

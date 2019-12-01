@@ -7,6 +7,15 @@
             <div class="card mt-5" style="background-color:lightgray">
                 <h5 class="card-header text-center">Belépés</h5>
                 <div class="container">
+                    <% if(typeof error !== 'undefined'){ %>
+                    <div class="alert alert-warning alert-dismissible fade show text-center my-3" role="alert">
+                        <strong>Hoppá!</strong> Nem megfelelő jelszó/email!<br><a href="#" class="alert-link">Elfelejtettem
+                            a jelszavam :(</a>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <% } %>
                     <form action="/login" method="post">
                         <div class="form-group my-3 mx-4">
                             <label for="exampleInputEmail1">Email cím</label>
@@ -15,7 +24,8 @@
                         </div>
                         <div class="form-group my-3 mx-4">
                             <label for="exampleInputPassword1">Jelszó</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Jelszó">
+                            <input type="password" class="form-control" id="password" name="password"
+                                placeholder="Jelszó">
                         </div>
                         <div class="text-center">
                             <button class="btn btn-dark my-3 mx-4" role="button">Login</button>

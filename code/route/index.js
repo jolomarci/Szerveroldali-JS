@@ -12,7 +12,7 @@ const getPartMW = require('../middlewares/part/getPartMW')
 const savePartMW = require('../middlewares/part/savePartMW')
 const delPartMW = require('../middlewares/part/delPartMW')
 const getCartMW = require('../middlewares/cart/getCartMW')
-const checkCartMW = require('../middlewares/cart/cartCheckMW')
+const cartCheckMW = require('../middlewares/cart/cartCheckMW')
 const saveItemMW = require('../middlewares/cart/saveItemMW')
 const delItemMW = require('../middlewares/cart/delItemMW')
 const getOrderMW = require('../middlewares/order/getOrderMW')
@@ -36,13 +36,11 @@ module.exports = function (app) {
     app.get('/auth',
         authMW(objRepo));
 
-    app.get('/login',
+    app.use('/login',
         inverseAuthMW(objRepo),
+        loginMW(objRepo),
         renderMW(objRepo, 'login'));
-
-    app.post('/login',
-        loginMW(objRepo));
-
+        
     app.get('/logout',
         logoutMW(objRepo));
 
@@ -99,7 +97,6 @@ module.exports = function (app) {
         renderMW(objRepo, 'partlist'));
 
     app.get('/part',
-        getCarMW(objRepo),
         getPartsMW(objRepo),
         renderMW(objRepo, 'partlist'));
 
@@ -107,7 +104,7 @@ module.exports = function (app) {
 
     app.use('/cart/new/:partid',
         getPartMW(objRepo),
-        checkCartMW(objRepo),
+        cartCheckMW(objRepo),
         saveItemMW(objRepo),
         renderMW(objRepo, 'partlist'));
 

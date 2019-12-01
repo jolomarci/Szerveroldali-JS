@@ -8,7 +8,7 @@ app.use(express.static('static'));
 app.use(session({
     secret: 'sajt',
     cookie: {
-        maxAge: "1yrs"
+        maxAge: 365 * 24 * 60 * 60 * 1000
     },
     resave: true,
     saveUninitialized: false

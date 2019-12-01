@@ -10,9 +10,9 @@ module.exports = function (objectrepository, viewName) {
             return next();
 
         res.locals.order.remove(err => {
-            console.log('order deleted')
             if (err) return next(err);
 
+            console.log('order deleted')
             return res.redirect("/admin");
         });
     };

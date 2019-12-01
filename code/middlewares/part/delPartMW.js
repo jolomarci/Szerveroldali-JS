@@ -9,10 +9,9 @@ module.exports = function (objectrepository) {
             return next();
 
         res.locals.part.remove(err=>{
-            console.log('part deleted')
-            if(err)
-                return next(err);
+            if(err) return next(err);
             
+            console.log('part deleted')
             return res.redirect('/part/' + res.locals.car._id);
         })
     };

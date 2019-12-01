@@ -12,7 +12,7 @@ module.exports = function (objectrepository) {
             typeof req.body.year ==='undefined'){
             return next();
             }
-        //console.log(res.locals.car);
+            
         if (typeof res.locals.car ==='undefined'){
             res.locals.car = new carModel();
             console.log("new car created");

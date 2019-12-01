@@ -7,7 +7,6 @@ module.exports = function (objectrepository) {
     const orderModel = requireOption(objectrepository, 'orderModel');
 
     return function (req, res, next) {
-        //ha nem érkezik márka paraméter akkor listázzuk az összeset
         if (req.params.brandid === undefined) {
             orderModel.find({}, (err, order) => {
                 if (err) {

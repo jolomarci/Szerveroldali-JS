@@ -13,21 +13,27 @@
                 <% } %>
             </h4>
             <div class="container">
-                <form action="/part/<%= (typeof part==='undefined') ? car._id + "/new" :car._id + "/edit/" + part._id %>" method="post">
+                <form
+                    action="/part/<%= (typeof part==='undefined') ? car._id + "/new" :car._id + "/edit/" + part._id %>"
+                    method="post">
                     <div class="form-row">
                         <div class="col  my-4">
+                            <label for="partBrand">Gyártó</label>
                             <input type="text" class="form-control" placeholder="Gyártó" name="partBrand" id="partBrand"
                                 value="<%= (typeof part==='undefined') ? '' : part.partBrand %>">
                         </div>
                         <div class="col  my-4 ml-4">
-                            <input type="text" class="form-control" placeholder="Alkatrész" name="partType" id="partType"
-                                value="<%= (typeof part==='undefined') ? '' : part.partType %>">
+                            <label for="partType">Alkatrész típusa</label>
+                            <input type="text" class="form-control" placeholder="Alkatrész" name="partType"
+                                id="partType" value="<%= (typeof part==='undefined') ? '' : part.partType %>">
                         </div>
                         <div class="col  my-4">
+                            <label for="comment">Megjegyzés</label>
                             <input type="text" class="form-control" placeholder="Megjegyzés" name="comment" id="comment"
                                 value="<%= (typeof part==='undefined') ? '' : part.comment %>">
                         </div>
                         <div class="col  my-4 mr-4">
+                            <label for="price">Ár</label>
                             <input type="number" class="form-control" placeholder="Ár" name="price" id="price"
                                 value="<%= (typeof part==='undefined') ? '' : part.price %>">
                         </div>

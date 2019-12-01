@@ -5,7 +5,6 @@ const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
     const partModel = requireOption(objectrepository, 'partModel');
-    //const carModel = requireOption(objectrepository, 'carModel')
 
     return function (req, res, next) {
         if (typeof req.body.partType === 'undefined' ||
@@ -13,7 +12,6 @@ module.exports = function (objectrepository) {
             typeof req.body.comment === 'undefined' ||
             typeof req.body.price === 'undefined' ||
             typeof res.locals.car === 'undefined') {
-            console.log("somethin funny happened");
             return next();
         }
 

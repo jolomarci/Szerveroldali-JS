@@ -7,35 +7,31 @@ module.exports = function (objectrepository) {
     const partModel = requireOption(objectrepository, 'partModel');
 
     return function (req, res, next) {
-        /*if(typeof res.locals.part !== 'undefined'){
-            console.log("miafaszvan" + res.locals.part);
-            partModel.find({_carid: res.locals.part._carid}, (err, parts) => {
-                if (err) {
-                    return next(err);
-                }
-
-                res.locals.parts = parts
-                return next();
-            });
-        }*/
-        if (req.params.carid !== 'undefined') {
-            partModel.find({_carid: req.params.carid}, (err, parts) => {
-                if (err) {
-                    console.log("errror gecii");
-                    return next(err);
-                }
-
+    
+        if (typeof req.params.carid === 'undefined') {
+            console.log(req.params.carid);
+            partModel.find({}, (err, parts) => {
+                if (err) return next(err);
+                
+                console.log("parts found");
                 res.locals.parts = parts;
                 return next();
             })
         }
         else {
-            partModel.find({}, (err, parts) => {
-                if (err) {
-                    console.log("errror gecii bazdmeg");
-                    return next(err);
-                }
+            partModel.find({_carid: req.params.carid}, (err, parts) => {
+                if (err) return next(err);
 
+                
+                console.log(parts);
+                if(parts.length === 0){
+                    res.locals.error = "no parts found";
+                    res.locals.parts = parts;
+                    console.log(res.locals.error);
+                    return next();
+                }
+                
+                console.log("parts for car found");
                 res.locals.parts = parts;
                 return next();
             });
