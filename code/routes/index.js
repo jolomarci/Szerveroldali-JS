@@ -12,7 +12,7 @@ const getPartMW = require('../middlewares/part/getPartMW')
 const savePartMW = require('../middlewares/part/savePartMW')
 const delPartMW = require('../middlewares/part/delPartMW')
 const getCartMW = require('../middlewares/cart/getCartMW')
-const getItemMW = require('../middlewares/cart/getItemMW')
+const saveItemMW = require('../middlewares/cart/saveItemMW')
 const delItemMW = require('../middlewares/cart/delItemMW')
 const getOrderMW = require('../middlewares/order/getOrderMW')
 const saveOrderMW = require('../middlewares/order/saveOrderMW')
@@ -47,7 +47,7 @@ module.exports = function (app) {
 
     //car routes
 
-    app.use('/car/:brandid/new',
+    app.use('/car/new',
         authMW(objRepo),
         saveCarMW(objRepo),
         renderMW(objRepo, 'careditnew'));
@@ -75,35 +75,43 @@ module.exports = function (app) {
 
     app.use('/part/:carid/new',
         authMW(objRepo),
+        getCarMW(objRepo),
         savePartMW(objRepo),
         renderMW(objRepo, 'parteditnew'));
 
     app.use('/part/:carid/edit/:partid',
         authMW(objRepo),
+        getCarMW(objRepo),
         getPartMW(objRepo),
         savePartMW(objRepo),
         renderMW(objRepo, 'parteditnew'));
 
     app.use('/part/:carid/del/:partid',
         authMW(objRepo),
+        getCarMW(objRepo),
         getPartMW(objRepo),
         delPartMW(objRepo));
 
     app.get('/part/:carid',
+        getCarMW(objRepo),
         getPartsMW(objRepo),
         renderMW(objRepo, 'partlist'));
 
     app.get('/part',
+        getCarMW(objRepo),
         getPartsMW(objRepo),
         renderMW(objRepo, 'partlist'));
 
     //cart routes
-    app.use('/cart/del/:partid',
-        getItemMW(objRepo),
-        delItemMW(objRepo));
 
     app.use('/cart/new/:partid',
-        getItemMW(objRepo),
+        getPartMW(objRepo),
+        saveItemMW(objRepo),
+        getPartsMW(objRepo),
+        renderMW(objRepo, 'partlist'));
+
+    app.use('/cart/del/:partid',
+        getPartMW(objRepo),
         delItemMW(objRepo));
 
     app.get('/cart',

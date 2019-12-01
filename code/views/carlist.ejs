@@ -21,7 +21,7 @@
                         </thead>
                         <tbody>
 
-                            <% car.forEach(function(one){ %>
+                            <% cars.forEach(function(one){ %>
                             <tr>
                                 <td>
                                     <%= one.carbrand %>
@@ -46,7 +46,7 @@
                                         <i class="fas fa-times"></i>
                                     </a>
 
-                                    <a class="btn btn-success btn-sm" href="/car/<%= one.carbrand.toLowerCase()%>/new" role="button">
+                                    <a class="btn btn-success btn-sm" href="/car/new" role="button">
                                         <i class="fas fa-plus"></i>
                                     </a>
                                 </td>

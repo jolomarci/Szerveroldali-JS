@@ -9,12 +9,12 @@ module.exports = function (objectrepository) {
     return function (req, res, next) {
         //ha nem érkezik márka paraméter akkor listázzuk az összeset
         if (req.params.brandid === undefined) {
-            carModel.find({}, (err, car) => {
+            carModel.find({}, (err, cars) => {
                 if (err) {
                     return next(err);
                 }
 
-                res.locals.car = car;
+                res.locals.cars = cars;
                 return next();
             })
         }
@@ -22,12 +22,12 @@ module.exports = function (objectrepository) {
         else {
             var brand = req.params.brandid;
             brand = brand.charAt(0).toUpperCase() + brand.slice(1);
-            carModel.find({ carbrand: brand }, (err, car) => {
+            carModel.find({ carbrand: brand }, (err, cars) => {
                 if (err) {
                     return next(err);
                 }
-
-                res.locals.car = car;
+                console.log("car found");
+                res.locals.cars = cars;
                 return next();
             })
         }

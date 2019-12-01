@@ -5,22 +5,38 @@
     <div class="col-1"></div>
     <div class="col-10 mt-3">
         <div class="card text-center">
-            <h4 class="card-header ">Szerkesztés</h4>
+            <h4 class="card-header ">
+                <% if(typeof part=== 'undefined') {%>
+                Új alkatrész hozzáadása
+                <% }else{%>
+                Szerkesztés
+                <% } %>
+            </h4>
             <div class="container">
-                <form>
+                <form action="/part/<%= (typeof part==='undefined') ? car._id + "/new" :car._id + "/edit/" + part._id %>" method="post">
                     <div class="form-row">
+                        <div class="col  my-4">
+                            <input type="text" class="form-control" placeholder="Gyártó" name="partBrand" id="partBrand"
+                                value="<%= (typeof part==='undefined') ? '' : part.partBrand %>">
+                        </div>
                         <div class="col  my-4 ml-4">
-                            <input type="text" class="form-control" placeholder="Alkatrész">
+                            <input type="text" class="form-control" placeholder="Alkatrész" name="partType" id="partType"
+                                value="<%= (typeof part==='undefined') ? '' : part.partType %>">
                         </div>
                         <div class="col  my-4">
-                            <input type="text" class="form-control" placeholder="Gyártó">
+                            <input type="text" class="form-control" placeholder="Megjegyzés" name="comment" id="comment"
+                                value="<%= (typeof part==='undefined') ? '' : part.comment %>">
                         </div>
                         <div class="col  my-4 mr-4">
-                            <input type="text" class="form-control" placeholder="Ár">
+                            <input type="number" class="form-control" placeholder="Ár" name="price" id="price"
+                                value="<%= (typeof part==='undefined') ? '' : part.price %>">
                         </div>
                     </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success my-3 mx-4">Mentés</button>
+                        <button class="btn btn-danger my-3 mx-4" href="/part">Mégsem</button>
+                    </div>
                 </form>
-                <button type="submit" class="btn btn-dark mb-3">Hozzáadás</button>
             </div>
         </div>
     </div>

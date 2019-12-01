@@ -14,7 +14,7 @@ const Order = db.model('Order', {
     cardname: String,
     cardnum: Number,
     date: String,
-    securenum: Number 
+    code: Number 
 })
 
 module.exports = Order;

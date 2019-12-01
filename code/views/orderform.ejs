@@ -7,45 +7,39 @@
             <div class="card text-center">
                 <h4 class="card-header">Személyes adatok</h4>
                 <div class="container my-3">
-                    <form>
+                    <form action="/order" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputName">Név</label>
-                                <input type="text" class="form-control" id="inputName" placeholder="Név">
+                                <input type="text" class="form-control" id="name" placeholder="Név">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputEmail">Email</label>
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                <input type="email" class="form-control" id="email" placeholder="Email">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputCity">Város</label>
-                                <input type="text" class="form-control" id="inputCity">
+                                <input type="text" class="form-control" id="city">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputState">Megye</label>
-                                <select id="inputState" class="form-control">
+                                <select id="county" class="form-control">
                                     <option selected>Válassz...</option>
                                     <option>...</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputZip">Irányítószám</label>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" id="postcode">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputAddress">Cím</label>
-                            <input type="text" class="form-control" id="inputAddress"
+                            <input type="text" class="form-control" id="address"
                                 placeholder="pl: 1117, Budapest, Irinyi József u. 42.">
                         </div>
-                        <div class="form-group">
-                            <label for="inputAddress2">Cím 2</label>
-                            <input type="text" class="form-control" id="inputAddress2"
-                                placeholder="Ház, emelet, ajtó (opcionális)">
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -56,30 +50,30 @@
             <div class="card text-center">
                 <h4 class="card-header">Banki adatok</h4>
                 <div class="container my-3">
-                    <form>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputCardName">Kártyán szereplő név</label>
-                                <input type="text" class="form-control" id="inputCardName">
+                                <input type="text" class="form-control" id="cardname">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputCardNum">Kártyaszám</label>
-                                <input type="text" class="form-control" id="inputCardNum">
+                                <input type="text" class="form-control" id="cardnum">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-3"></div>
                             <div class="form-group col-md-3">
                                 <label for="inputCardDate">Lejárat</label>
-                                <input type="text" class="form-control" id="inputCardDate">
+                                <input type="text" class="form-control" id="date">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="inputCardCode">Biztonsági kód</label>
-                                <input type="password" class="form-control" id="inputCardCode">
+                                <input type="password" class="form-control" id="code">
                             </div>
                             <div class="form-group col-md-3"></div>
                         </div>
                         <button type="submit" class="btn btn-success">Megrendelem</button>
+                        <button class="btn btn-success" href="/cart">Mégsem</button>
                     </form>
                 </div>
             </div>

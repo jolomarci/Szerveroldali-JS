@@ -13,16 +13,25 @@
                 <% } %>
             </h4>
             <div class="container">
-                <form method="POST">
+                <form action="/car/<%= (typeof car==='undefined') ? "new" : car.carbrand + "/edit/" + car._id %>" method="post">
                     <div class="form-row">
                         <div class="col my-4">
                             <label for="sel1">Márka:</label>
-                            <select class="form-control" id="sel1">
+                            <% if(typeof car!=='undefined'){ %>
+                            <select class="form-control" id="brandlist" name="brandlist">
                                 <option <%if(car.carbrand=='Opel'){%> selected <%}%>>Opel</option>
-                                <option <%if(car.carbrand=='Ford'){%> selected <%}%>>Ford</option>
-                                <option <%if(car.carbrand=='Suzuki'){%> selected <%}%>>Suzuki</option>
-                                <option <%if(car.carbrand=='Toyota'){%> selected <%}%>>Toyota</option>
+                                    <option <%if(car.carbrand=='Ford'){%> selected <%}%>>Ford</option>
+                                    <option <%if(car.carbrand=='Suzuki'){%> selected <%}%>>Suzuki</option>
+                                    <option <%if(car.carbrand=='Toyota'){%> selected <%}%>>Toyota</option>
+                                </select>
+                            <% }else if(typeof car==='undefined'){ %> <select class="form-control" id="brandlist"
+                                    name="brandlist">
+                                <option>Opel</option>
+                                <option>Ford</option>
+                                <option>Suzuki</option>
+                                <option>Toyota</option>
                             </select>
+                            <% } %>
                         </div>
                         <div class="col  my-4">
                             <label for="model">Típus:</label>
@@ -35,9 +44,12 @@
                                 value="<%= (typeof car==='undefined') ? '' : car.year %>">
                         </div>
                     </div>
+                    <div class="text-center">
+                        <button class="btn btn-success mb-3 mx-4" role="button">Mentés</button>
+                        <button class="btn btn-danger mb-3 mx-4"
+                            href="/car/<%= (typeof car==='undefined') ? '' : car.carbrand.toLowerCase() %>">Mégsem</button>
+                    </div>
                 </form>
-                <input type="submit" class="btn btn-dark mb-3"></input>
-                <a class="btn btn-danger mb-3" href="/car/<%= (typeof car==='undefined') ? '' : car.carbrand.toLowerCase() %>">Mégsem</a>
             </div>
         </div>
     </div>

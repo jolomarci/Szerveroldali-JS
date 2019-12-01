@@ -19,8 +19,8 @@
                         </thead>
                         <tbody>
                             <% var sum=0 %>
-                            <% part.forEach(function(one){ %>
-                            <% sum += one.price%>
+                            <% parts.forEach(function(one){ %>
+                            <% sum += one.price*one.quantity %>
                             <tr>
                                 <td>
                                     <%= one.partBrand %>
@@ -29,18 +29,18 @@
                                     <%= one.partType %>
                                 </td>
                                 <td>
-                                    <%= one.price %>
+                                    <%= one.price %> FT/db
                                 </td>
                                 <td>
                                     <%= one.quantity %> db
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger btn-sm" href="/cart/del/<%= one._id %>" role="button">
+                                    <button type="submit" class="btn btn-danger btn-sm" href="/cart/del/<%= one._id %>" role="button">
                                         <i class="fas fa-times"></i>
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
-                            <% }); %>
+                            <% }) %>
                         </tbody>
                     </table>
                 </div>
