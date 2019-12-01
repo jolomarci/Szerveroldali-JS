@@ -9,7 +9,6 @@ module.exports = function (objectrepository) {
         partModel.find({ inCart: true }, (err, parts) => {
             if (err) return next(err);
             
-            res.locals.cartSum  += parts.price;
             res.locals.parts = parts;
             return next();
         })

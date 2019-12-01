@@ -5,8 +5,10 @@ const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
     return function (req, res, next) {
-        if (res.locals.part === 'undefined')
+        if (res.locals.part === 'undefined'){
+            console.log("cant delete item");
             return next();
+        }
 
         res.locals.part.inCart = false;
         res.locals.part.quantity = 0;

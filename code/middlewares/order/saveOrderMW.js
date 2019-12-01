@@ -6,19 +6,19 @@ const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository, viewName) {
     const orderModel = requireOption(objectrepository, 'orderModel');
+    const partModel = requireOption(objectrepository, 'partModel');
 
-    return function (req, res, next) {
+    return async function (req, res, next) {
         if (typeof req.body.name === 'undefined' ||
-            typeof req.body.email === 'undefined' ||
-            typeof req.body.cardname === 'undefined' ||
-            typeof req.body.cardnum === 'undefined' ||
-            typeof req.body.date === 'undefined' ||
-            typeof req.body.code === 'undefined') {
+            typeof req.body.email === 'undefined') {
+            console.log("nem jó te szar");
             return next();
         }
         res.locals.order = new orderModel();
 
-        //res.locals.order.price
+        var cart = await partModel.find({ inCart: true }).exec();
+
+        res.locals.order.price = cart.reduce((arr, currElem) => (arr += currElem.price * currElem.quantity), 0);
         res.locals.order.name = req.body.name;
         res.locals.order.email = req.body.email;
 
@@ -32,6 +32,7 @@ module.exports = function (objectrepository, viewName) {
         res.locals.order.date = req.body.date;
         res.locals.order.code = req.body.code;
 
+        console.log("order not yet saved");
         res.locals.order.save(err => {
             if (err) return next(err);
 

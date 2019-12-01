@@ -21,6 +21,7 @@ module.exports = function (objectrepository) {
         if (req.params.carid !== 'undefined') {
             partModel.find({_carid: req.params.carid}, (err, parts) => {
                 if (err) {
+                    console.log("errror gecii");
                     return next(err);
                 }
 
@@ -31,6 +32,7 @@ module.exports = function (objectrepository) {
         else {
             partModel.find({}, (err, parts) => {
                 if (err) {
+                    console.log("errror gecii bazdmeg");
                     return next(err);
                 }
 

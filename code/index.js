@@ -8,7 +8,7 @@ app.use(express.static('static'));
 app.use(session({
     secret: 'sajt',
     cookie: {
-        maxAge: 60000
+        maxAge: "1yrs"
     },
     resave: true,
     saveUninitialized: false
@@ -16,7 +16,7 @@ app.use(session({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-require('./routes/index')(app);
+require('./route/index')(app);
 app.listen(3000, function () {
     console.log('Hello :3000');
 });
