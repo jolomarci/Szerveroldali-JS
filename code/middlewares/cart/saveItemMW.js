@@ -6,6 +6,7 @@ const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
     const partModel = requireOption(objectrepository, 'partModel');
+    const carModel = requireOption(objectrepository, 'carModel');
 
     return function (req, res, next) {
         if (res.locals.part === 'undefined') {

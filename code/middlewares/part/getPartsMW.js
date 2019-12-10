@@ -9,7 +9,7 @@ module.exports = function (objectrepository) {
     return function (req, res, next) {
     
         if (typeof req.params.carid === 'undefined') {
-            console.log(req.params.carid);
+            res.locals.error = "no carid";
             partModel.find({}, (err, parts) => {
                 if (err) return next(err);
                 

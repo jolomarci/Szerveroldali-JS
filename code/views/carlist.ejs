@@ -7,6 +7,13 @@
             <div class="card text-center">
                 <h4 class="card-header text-center">Autók</h4>
                 <div class="container">
+                    <% if(loggedin) { %>
+                        <div class="card text-center my-3">
+                            <a class="btn btn-success btn-lg" href="/car/new" role="button">
+                                <i class="fas fa-plus"></i> Új autó hozzáadása
+                            </a>
+                        </div>
+                    <% } %>
                     <table class="table mt-3 table-hover table-bordered">
                         <thead>
                             <tr>
@@ -33,21 +40,18 @@
                                     <%= one.year %>
                                 </td>
                                 <td>
-                                    <a class="btn btn-dark btn-sm" href="/part/<%= one._id%>"
-                                        role="button">Tovább</a>
+                                    <a class="btn btn-dark btn-sm" href="/part/<%= one._id%>" role="button">Tovább</a>
                                 </td>
                                 <% if(loggedin) { %>
                                 <td>
-                                    <a class="btn btn-dark btn-sm" href="/car/<%= one.carbrand.toLowerCase()%>/edit/<%= one._id%>" role="button">
+                                    <a class="btn btn-dark btn-sm"
+                                        href="/car/<%= one.carbrand.toLowerCase()%>/edit/<%= one._id%>" role="button">
                                         <i class="fas fa-edit"></i>
                                     </a>
 
-                                    <a class="btn btn-danger btn-sm" href="/car/<%= one.carbrand.toLowerCase() %>/del/<%= one._id%>" role="button">
+                                    <a class="btn btn-danger btn-sm"
+                                        href="/car/<%= one.carbrand.toLowerCase() %>/del/<%= one._id%>" role="button">
                                         <i class="fas fa-times"></i>
-                                    </a>
-
-                                    <a class="btn btn-success btn-sm" href="/car/new" role="button">
-                                        <i class="fas fa-plus"></i>
                                     </a>
                                 </td>
                                 <% } %>

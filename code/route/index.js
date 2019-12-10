@@ -106,6 +106,7 @@ module.exports = function (app) {
         getPartMW(objRepo),
         cartCheckMW(objRepo),
         saveItemMW(objRepo),
+        getCarMW(objRepo),
         renderMW(objRepo, 'partlist'));
 
     app.use('/cart/del/:partid',
